@@ -4,7 +4,7 @@ permalink: /about/
 ---
 
 
-Hi. My name is Virginia Hickox. I have a Bachelors in Electrical Engineering from RPI. I currently work as an Electrical Power Enginee    r performing powerflow analytics on the electric powergrid.
+Hi. My name is Virginia Hickox. I have a Bachelors in Electrical Engineering from RPI. I currently work as an Electrical Power Engineer performing powerflow analytics on the electric powergrid.
 
 In my spare time I like to  [code](https://github.com/GInxh/). Having some experience
 in both Electric Power designing and constructing substations for renewable energy fa

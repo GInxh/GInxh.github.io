@@ -6,7 +6,7 @@ permalink: /about/
 
 Hi. My name is Virginia Hickox. 
 
-I have a Bachelors in Electrical Engineering from RPI, where I did a concentration in Electric Power, took multiple advanced classes in Electric Power, and published research on transmission line power flow design and economics. I also took five classes inComputer Science as a side hobby.
+I have a Bachelors in Electrical Engineering from RPI, where I did a concentration in Electric Power, took multiple advanced classes in Electric Power, and published research on transmission line power flow design and economics. I also took five classes in Computer Science as a side hobby.
 
 I currently work as an Electrical Power Engineer performing powerflow analytics on the electric powergrid.
 

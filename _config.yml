@@ -47,6 +47,8 @@ nav:
     url:            "/about"
   - name:           "Archive"
     url:            "/archive"
+  - name:           "Docs"
+    url:            "/tags"
   - name:           "Github"
     url:            "https://github.com/GInxh"
 

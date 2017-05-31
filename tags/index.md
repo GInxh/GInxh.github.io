@@ -3,11 +3,11 @@ title:
 permalink: /tags/
 ---
 
-Documents I've made to use
+Documents I made
 
 * [linux](bluelinux.pdf)
 
-Other Documents I use 
+Other 
 
 * [tmux](tmux.pdf)
 * [github](https://rogerdudler.github.io/git-guide/)

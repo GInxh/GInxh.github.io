@@ -11,4 +11,6 @@ I made
 use
 
 * [tmux](tmux.pdf)
+* [vim](https://vim.rtorr.com/)
+* [markdown](markdown.pdf)
 * [github](https://rogerdudler.github.io/git-guide/)

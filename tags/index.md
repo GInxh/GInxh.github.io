@@ -1,13 +1,9 @@
 ---
-layout: other
+title:
+permalink: /about/
 ---
 
-# Documents
+My favorite cheat sheets
 
----
-&nbsp;
-
-### My favorite cheat sheets:
-
- * [vim](vim.pdf)
- * [tmux](tmux.pdf)
+* [linux](bluelinux.pdf)
+* [tmux](tmux.pdf)

@@ -45,8 +45,11 @@ kramdown:
 nav:
   - name:           "About"
     url:            "/about"
+  - name:           "Documents"
+    url:            "/tags"
   - name:           "Github"
     url:            "https://github.com/GInxh"
+ 
  
 # Sass
 sass:

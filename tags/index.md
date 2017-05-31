@@ -2,6 +2,7 @@
 title:
 permalink: /tags/
 ---
+An archive of my favorite cheat sheets
 
 Documents I made
 

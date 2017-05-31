@@ -1,6 +1,6 @@
 ---
 title:
-permalink: /about/
+permalink: /tags/
 ---
 
 My favorite cheat sheets

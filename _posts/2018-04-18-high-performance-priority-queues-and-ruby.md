@@ -246,7 +246,7 @@ You can change `RUBY_GC_MALLOC_LIMIT`, and you should tailor this limit to the s
 
 ###### delayed heap ordering
 
-This is because the fibonacci heap, has delayed heap ordering after insertion, which is deferred to the extract minimum function. (The standard fibonacci heap defaults to a min heap, but can be utilized
+This is because the fibonacci heap has delayed heap ordering after insertion, which is deferred to the extract minimum function. (The standard fibonacci heap defaults to a min heap, but can be utilized
 with a max heap.) The extract minimum function removes the minimum. If the minimum had any children, it adds the children to the root list each as their own heap, with their subheaps, if they have any.
 
 Then, it invokes a merge operation. The merge operation merges all of the heaps of the same order. After this, the minimum is then set to the new minimum in the list. 

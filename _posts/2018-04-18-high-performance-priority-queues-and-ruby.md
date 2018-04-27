@@ -268,7 +268,7 @@ This results in some operations running very fast, and some operations running v
 
 Read the code [first](https://github.com/kanwei/algorithms/blob/master/lib/containers/heap.rb), documentation [second](https://github.com/kanwei/algorithms/blob/master/lib/containers/priority_queue.rb)
 
-##### Know your GC and ObjectSpace
+###### Know your GC and ObjectSpace
 
 Ruby has had lots of changes with garbage collection algorithms and various implementations since the 1.9 MRI release.
 Understanding how these impact `GC.stat` outputs leads to understanding the results of the metrics, instead of relying on

@@ -234,7 +234,7 @@ With five runs for each version of the queue, the fibonacci heapi consistently r
 ###### memory allocation
 
 Unlike C, ruby by default has it's own heap, and performs memory allocation and garbage collection ([GC](https://ruby-doc.org/core-2.2.0/GC.html)). By default `MALLOC_INCREASE_BYTES_LIMIT` is set to 16MB for `Ruby 2.4`. The previous
-`GC.stat[: malloc_limit]` is deprecated.
+`GC.stat[:malloc_limit]` is deprecated.
 
 [This means](https://www.speedshop.co/2017/03/09/a-guide-to-gc-stat.html) ruby does not trigger a garbage collection run to see if it can first get rid of stuff it doesn't need anymore, which takes a relatively long time, or go 
 ask the kernel for more memory, which also takes a relatively long time, until the ruby programs needs more than 16MB. This could partially explain why between the second and third run, 
@@ -266,7 +266,7 @@ This results in some operations running very fast, and some operations running v
 
 ###### code 
 
-Read the code [first](), documentation [second]()
+Read the code [first](https://github.com/kanwei/algorithms/blob/master/lib/containers/heap.rb), documentation [second](https://github.com/kanwei/algorithms/blob/master/lib/containers/priority_queue.rb)
 
 ##### Know your GC and ObjectSpace
 
@@ -274,4 +274,8 @@ Ruby has had lots of changes with garbage collection algorithms and various impl
 Understanding how these impact `GC.stat` outputs leads to understanding the results of the metrics, instead of relying on
 inconsistent and unintuitive output.
 
-There are alot of memory profile gems released that were very helpful, that are not compatible with `Ruby 2.4` 
+There are alot of memory profile gems released that were very helpful, that are not compatible with `Ruby 2.4` or above. A full overview
+of the backend changes will be helpful in creating a memory_profiler gem going forward. `GC.stat` metrics have always been undefined in
+the formal documentation of all releases, but undertanding the GC algorithms that impact them is more critical for being able to 
+analyze code that has less obvious performance benefits, and track down the root cause of memory leaks and other performance issues
+in the world.

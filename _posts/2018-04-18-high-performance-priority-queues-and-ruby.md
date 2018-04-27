@@ -233,13 +233,14 @@ With five runs for each version of the queue, the fibonacci heapi consistently r
 
 ###### memory allocation
 
-Unlike C, ruby by default has it's own heap, and performs memory allocation and garbage collection ([GC](https://ruby-doc.org/core-2.2.0/GC.html)). By default `RUBY_GC_MALLOC_LIMIT` is set to 8MB.
+Unlike C, ruby by default has it's own heap, and performs memory allocation and garbage collection ([GC](https://ruby-doc.org/core-2.2.0/GC.html)). By default `MALLOC_INCREASE_BYTES_LIMIT` is set to 16MB for `Ruby 2.4`. The previous
+`GC.stat[: malloc_limit]` is deprecated.
 
 [This means](https://www.speedshop.co/2017/03/09/a-guide-to-gc-stat.html) ruby does not trigger a garbage collection run to see if it can first get rid of stuff it doesn't need anymore, which takes a relatively long time, or go 
-ask the kernel for more memory, which also takes a relatively long time, until the ruby programs needs more than 8MB. This could partially explain why between the second and third run, 
+ask the kernel for more memory, which also takes a relatively long time, until the ruby programs needs more than 16MB. This could partially explain why between the second and third run, 
 the fibonacci heap runtime increased **123x**, with a signifcantly higher ratio in system time. 
 
-In the above test, the insertions are being loaded onto the element queue with 8 byte integers. This means I can load about 1 million integers into my element based priority queue, 
+In the above test, the insertions are being loaded onto the element queue with 8 byte integers. This means I can load about 2 million integers into my element based priority queue, 
 give or take some for the overhead of the class, before ruby triggers more memory allocation. 
 
 You can change `RUBY_GC_MALLOC_LIMIT`, and you should tailor this limit to the size of your program or Rails application. Increasing `RUBY_GC_MALLOC_LIMIT` for both would scale down the performance discrepency between the two, but not eliminate it.
@@ -261,3 +262,16 @@ the heaps by reorganizing children and subheaps to existing heaps of the same or
 This is not a degradation in performance from an unlikely arrangement of input values. The heap ordering will happen intermittently.
 This results in some operations running very fast, and some operations running very slow. More detailed explanations of the standard methods can be found [here](http://www.growingwiththeweb.com/data-structures/fibonacci-heap/overview/)
 
+### Lessons Learned
+
+###### code 
+
+Read the code [first](), documentation [second]()
+
+##### Know your GC and ObjectSpace
+
+Ruby has had lots of changes with garbage collection algorithms and various implementations since the 1.9 MRI release.
+Understanding how these impact `GC.stat` outputs leads to understanding the results of the metrics, instead of relying on
+inconsistent and unintuitive output.
+
+There are alot of memory profile gems released that were very helpful, that are not compatible with `Ruby 2.4` 

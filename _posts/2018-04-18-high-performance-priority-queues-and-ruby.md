@@ -251,7 +251,7 @@ This is because the fibonacci heap has delayed heap ordering after insertion, wh
 with a max heap.) The extract minimum function removes the minimum. If the minimum had any children, it adds the children to the root list each as their own heap, with their subheaps, if they have any.
 
 Then, it invokes a merge operation. The merge operation merges all of the heaps of the same order. After this, the minimum is then set to the new minimum in the list. 
-The fact that the most expensive methods are not apart of the insertion, further confirms the significance of memory overhead contributing to the repeated insertions with no intermittent extractions.
+The fact that the most expensive methods are not apart of the insertion, further confirms the significance of memory overhead contributing to the repeated insertions with no intermittent extractions, from the `benchmark.bmbm` test above.
 
 ###### the worst case is a likely case
 

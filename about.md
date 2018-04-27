@@ -10,5 +10,3 @@ I have a Bachelors in Electrical Engineering from RPI, where I did a concentrati
 If you would like a copy of my resume, or to work on a project with me, you can contact me
 
 via [email](mailto:vhickox@gmail.com)  
-
-via [LinkedIn](https://www.linkedin.com/in/virginia-hickox)

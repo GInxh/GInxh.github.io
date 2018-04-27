@@ -21,7 +21,7 @@ For a sanity check, it turns out [others](https://www.salsify.com/blog/engineeri
 
 Next, I went to the code to look at the data structures and algorithms used to see if there were any obvious disadvantages for runtimes. Simply looking at the code showed the priority queue container utilized a heap.
 Using a binary heap is a common, and agreed to be a generally optimized implementation.         We can summarize
-some of the most commonly known implementations with the following analysis, where M is the max element, and N is the number of elements in the queue. 
+some of the most commonly known implementations with the following analysis, where **M** is the max element, and **N** is the number of elements in the queue. 
 
  | implementation        | time         | space   | insert | del max | max
  |:--------              |:-------:     |:--------:| :----: | :----: | :--:

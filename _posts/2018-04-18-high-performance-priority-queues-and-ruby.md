@@ -270,12 +270,13 @@ Read the code [first](https://github.com/kanwei/algorithms/blob/master/lib/conta
 
 ###### Know your GC and ObjectSpace
 
-Ruby has had lots of changes with garbage collection algorithms and various implementations since the 1.9 MRI release.
-Understanding how these impact `GC.stat` outputs leads to understanding the results of the metrics, instead of relying on
-inconsistent and unintuitive output.
+Ruby has had many changes with garbage collection algorithms, and other auxiliary implementations since the 1.9 MRI release.
+Understanding how these impact `GC.stat` outputs leads to understanding the results of the metrics, instead of relying on their
+potentially inconsistent and unintuitive output.
+
+`GC.stat` metrics have always been undefined in the formal documentation of all releases, but undertanding the GC algorithms that impact them is more critical for being able to 
+analyze code that has less obvious performance benefits, and track down the root cause of memory leaks and other performance issues
+in the wild.
 
 There are alot of memory profile gems released that were very helpful, that are not compatible with `Ruby 2.4` or above. A full overview
-of the backend changes will be helpful in creating a memory_profiler gem going forward. `GC.stat` metrics have always been undefined in
-the formal documentation of all releases, but undertanding the GC algorithms that impact them is more critical for being able to 
-analyze code that has less obvious performance benefits, and track down the root cause of memory leaks and other performance issues
-in the world.
+of the backend changes will be helpful in creating a memory_profiler gem going forward. 

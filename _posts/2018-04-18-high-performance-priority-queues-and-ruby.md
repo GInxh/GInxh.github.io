@@ -274,9 +274,8 @@ Ruby has had many changes with garbage collection algorithms, and other auxiliar
 Understanding how these impact `GC.stat` outputs leads to understanding the results of the metrics, instead of relying on their
 potentially inconsistent and unintuitive output.
 
-`GC.stat` metrics have always been undefined in the formal documentation of all releases, but undertanding the GC algorithms that impact them is more critical for being able to 
-analyze code that has less obvious performance benefits, and track down the root cause of memory leaks and other performance issues
-in the wild.
+`GC.stat` metrics have always been undefined in the formal documentation of all releases. Understanding how these impact `GC.stat` outputs leads to understanding the results of the metrics, instead of relying on their
+potentially inconsistent and unintuitive output.
 
 There are alot of memory profile gems released that were very helpful, that are not compatible with `Ruby 2.4` or above. [Looking through](https://github.com/ruby/ruby/blob/730d257b5a6bc0808116d91dbbaae73344273781/gc.c)
 the garbage collector will be helpful in creating a memory_profiler gem going forward. 

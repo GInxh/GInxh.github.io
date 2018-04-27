@@ -243,7 +243,7 @@ give or take some for the overhead of the class, before ruby triggers more memor
 the fibonacci heap runtime increased **123x**. 
 
 You can change `RUBY_GC_MALLOC_LIMIT`, and you should tailor this limit to the size of your program or Rails application. In this case, the memory overhead required for the fibonacci heap contributes to
-the massively larger runtime. Increasing `RUBY_GC_MALLOC_LIMIT` for both would scale down the discrepency between the two performance time down, but not eliminate it.
+the massively larger runtime. Increasing `RUBY_GC_MALLOC_LIMIT` for both would scale down the performance discrepency between the two, but not eliminate it.
 
 ###### delayed heap ordering
 

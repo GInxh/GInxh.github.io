@@ -255,7 +255,7 @@ The fact that the most expensive methods are not apart of the insertion, further
 
 ###### the worst case is a likely case
 
-While the fibonacci heap advertises **O(log(n))** amortised running times for the extract minimum and delete methods, they have a worst case of O(n) due to the deferred heap ordering. 
+While the fibonacci heap advertises **O(log(n))** amortised running times for the extract minimum and delete methods, they have a worst case of **O(n)** due to the deferred heap ordering. 
 This is because the heap ordering is not limited to **log(n)** convenience from having a balanced tree, until the heap ordering due to these methods creates the balancing of 
 the heaps by reorganizing children and subheaps to existing heaps of the same order.
 

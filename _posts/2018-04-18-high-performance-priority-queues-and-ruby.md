@@ -16,7 +16,7 @@ used and heavily integrated with the development community, it is the default re
 `$ gem install algorithms`
 
 Surprisingly, the algorithms priority queue was prohibitvely slow for my needs. I thought I might be inadvertently causing this degradation in my implementation
-of this queue with my larger project, but benchmark testing with, real, cpu, and system time with garbage collection purges between each run, as well as ips, confirmed the slow performance.
+of this queue with my larger project, but isolated benchmark testing with, real, cpu, and system time with garbage collection purges between each run, as well as ips, confirmed the slow performance.
 For a sanity check, it turns out [others](https://www.salsify.com/blog/engineering/ruby-scalable-offline-sort) were having issues with the priority queue in this gem as well.
 
 Next, I went to the code to look at the data structures and algorithms used to see if there were any obvious disadvantages for runtimes. Simply looking at the code showed the priority queue container utilized a heap.

@@ -236,11 +236,11 @@ With five runs for each version of the queue, the fibonacci heapi consistently r
 Unlike C, ruby by default has it's own heap, and performs memory allocation and garbage collection ([GC](https://ruby-doc.org/core-2.2.0/GC.html)). By default `RUBY_GC_MALLOC_LIMIT` is set to 8MB.
 
 [This means](https://www.speedshop.co/2017/03/09/a-guide-to-gc-stat.html) ruby does not trigger a garbage collection run to see if it can first get rid of stuff it doesn't need anymore, which takes a relatively long time, or go 
-ask the kernel for more memory, which also takes a relatively long time, until the ruby programs needs more than 8MB. 
+ask the kernel for more memory, which also takes a relatively long time, until the ruby programs needs more than 8MB. This could partially explain why between the second and third run, 
+the fibonacci heap runtime increased **123x**, with a signifcantly higher ratio in system time. 
 
-In the above test, the insertions are being loaded onto the queue with 8 byte integers. This means I can load about 1 million integers into my element based priority queue, 
-give or take some for the overhead of the class, before ruby triggers more memory allocation. This could partially explain why between the second and third run, 
-the fibonacci heap runtime increased **123x**. 
+In the above test, the insertions are being loaded onto the element queue with 8 byte integers. This means I can load about 1 million integers into my element based priority queue, 
+give or take some for the overhead of the class, before ruby triggers more memory allocation. 
 
 You can change `RUBY_GC_MALLOC_LIMIT`, and you should tailor this limit to the size of your program or Rails application. In this case, the memory overhead required for the fibonacci heap contributes to
 the massively larger runtime. Increasing `RUBY_GC_MALLOC_LIMIT` for both would scale down the performance discrepency between the two, but not eliminate it.

@@ -190,7 +190,7 @@ I decided to start by comparing code for the insertions. Both queues used heaps,
 Outside of some obvious increase in object class instantiations for nodes, I realized insertion used a merge function, 
 and linked lists. Linked Lists! Merge functions! What is going on here? It turns out the ruby algorithms gem doesn't use a normal heap, it uses a fibonacci heap. My first reaction was, what is a fibonacci heap? 
 
-### reverse engineering amortization runtimes
+### reverse engineering amortised runtimes
 
 It seems that a [fibonacci heap](http://www.growingwiththeweb.com/data-structures/fibonacci-heap/overview/) is an exercise for optimizing in [amortised](https://en.wikipedia.org/wiki/Amortized_analysis) analysis.
 In fact, both the formal documentation, wikipedia, and all the sources I could find stated that it was extremely 

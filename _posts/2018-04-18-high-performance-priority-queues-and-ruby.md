@@ -239,7 +239,8 @@ Unlike C, ruby by default has it's own heap, and performs memory allocation and 
 ask the kernel for more memory, which also takes a relatively long time, until the ruby programs needs more than 8MB. 
 
 In the above test, the insertions are being loaded onto the queue with 8 byte integers. This means I can load about 1 million integers into my element based priority queue, 
-give or take some for the overhead of the class, before ruby triggers more memory allocation. This could partially explain why between the fourth and fifth run even in my own priority queue, real time increased **12x**. 
+give or take some for the overhead of the class, before ruby triggers more memory allocation. This could partially explain why between the second and third run, 
+the fibonacci heap runtime increased **123x**. 
 
 You can change `RUBY_GC_MALLOC_LIMIT`, and you should tailor this limit to the size of your program or Rails application. In this case, the memory overhead required for the fibonacci heap contributes to
 the massively larger runtime. Increasing `RUBY_GC_MALLOC_LIMIT` for both would scale down the discrepency between the two performance time down, but not eliminate it.

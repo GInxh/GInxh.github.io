@@ -242,8 +242,7 @@ the fibonacci heap runtime increased **123x**, with a signifcantly higher ratio 
 In the above test, the insertions are being loaded onto the element queue with 8 byte integers. This means I can load about 1 million integers into my element based priority queue, 
 give or take some for the overhead of the class, before ruby triggers more memory allocation. 
 
-You can change `RUBY_GC_MALLOC_LIMIT`, and you should tailor this limit to the size of your program or Rails application. In this case, the memory overhead required for the fibonacci heap contributes to
-the massively larger runtime. Increasing `RUBY_GC_MALLOC_LIMIT` for both would scale down the performance discrepency between the two, but not eliminate it.
+You can change `RUBY_GC_MALLOC_LIMIT`, and you should tailor this limit to the size of your program or Rails application. Increasing `RUBY_GC_MALLOC_LIMIT` for both would scale down the performance discrepency between the two, but not eliminate it.
 
 ###### delayed heap ordering
 

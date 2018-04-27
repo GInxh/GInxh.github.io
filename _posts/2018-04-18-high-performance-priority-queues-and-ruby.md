@@ -193,7 +193,7 @@ and linked lists. Linked Lists! Merge functions! What is going on here? It turns
 ### reverse engineering amortization runtimes
 
 It seems that a [fibonacci heap](http://www.growingwiththeweb.com/data-structures/fibonacci-heap/overview/) is an exercise for optimizing in [amortised](https://en.wikipedia.org/wiki/Amortized_analysis) analysis.
-In fact, both the formal documentation, wikipedia and all the sources I could find stated that it was extremely 
+In fact, both the formal documentation, wikipedia, and all the sources I could find stated that it was extremely 
 slow performance wise, and generally accepted to be non ideal for realtime applications, due to large memory overhead, and the realization of worst cases in realtime. I looked at [rubyworks](https://github.com/rubyworks), and it also uses a fibonacci heap. Instead of going into how the concept 
 of [potential](https://en.wikipedia.org/wiki/Potential_method) is used to justify the amortised runtime, I wanted to know more about about what is happening in real time.
 

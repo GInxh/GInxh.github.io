@@ -262,7 +262,7 @@ the heaps by reorganizing children and subheaps to existing heaps of the same or
 This is not a degradation in performance from an unlikely arrangement of input values. The heap ordering will happen intermittently.
 This results in some operations running very fast, and some operations running very slow. More detailed explanations of the standard methods can be found [here](http://www.growingwiththeweb.com/data-structures/fibonacci-heap/overview/)
 
-### Lessons Learned
+### lessons Learned
 
 ###### code 
 

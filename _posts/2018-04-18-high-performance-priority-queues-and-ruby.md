@@ -155,7 +155,7 @@ end
 Now it was time for some microbenchmarking, utilizing a newly made priority queue. This should lead to some pretty straight forward comparisons also using a heap, in the same language as the 
 troublesome gem. 
 
-I used [benchmark.bmbm](https://ruby-doc.org/stdlib-1.9.3/libdoc/benchmark/rdoc/Benchmark.html) to calibrate for memory allocation and garbage collections in the subsequent rus.
+I used [benchmark.bmbm](https://ruby-doc.org/stdlib-1.9.3/libdoc/benchmark/rdoc/Benchmark.html) to calibrate for memory allocation and garbage collections in the subsequent runs.
 
 ```ruby
 arr = [1E3, 1E4, 1E5]

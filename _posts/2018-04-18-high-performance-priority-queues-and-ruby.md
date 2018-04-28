@@ -228,7 +228,7 @@ allocated_after = GC.stat(:heap_live_slots)
 puts "#{allocated_after}"
 ```
 
-With five runs for each version of the queue, the fibonacci heapi consistently requires **2x** as many objects as the array based heap I created. 
+With five runs for each version of the queue, the fibonacci heap consistently requires **2x** as many objects as the array based heap I created. 
 
 
 ###### memory allocation

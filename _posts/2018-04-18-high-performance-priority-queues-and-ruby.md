@@ -23,7 +23,7 @@ Next, I went to the code to look at the data structures and algorithms used to s
 Using a binary heap is a common, and agreed to be a generally optimized implementation. A heap is a specialized data structure that satisfies the heap property. For a max heap, the value of the parent node P is
 either greater than or equal to the value of the child nodes:
 
-![heap](/assets/images/heap.png "Center"){: .center-image}
+![heap](/assets/images/heap2.png "Center"){: .center-image}
 
 We can summarize some of the most commonly known implementations with the following analysis, where **M** is the max element, and **N** is the number of elements in the queue. 
 
@@ -54,7 +54,7 @@ p q.elements # => [nil, 7, 2, 5]
 # q << ...
 ```
 
-![array](/assets/images/array.png "Center"){: .center-image}
+![array](/assets/images/array2.png "Center"){: .center-image}
 
 
 

@@ -225,6 +225,9 @@ of [potential](https://en.wikipedia.org/wiki/Potential_method) is used to justif
 A fibonacci heap is a doubly linked list that contains the root nodes of a collection of heap ordered trees, where no two heaps have the same order. Each node can
 contain up to four pointers. A pointer to the minimum node of the root list is always kept up to date.  
 
+![fib](/assets/images/fib4.png "Center"){: .center-image}
+
+
 ######  object proliferation
 
 This design indicates alot more objects, utilizing a node class for every element, with up to four pointers. If you are familiar with data structures and runtimes, you should not have to confirm that there should be a high overhead for memory by looking at the code, even without knowing 

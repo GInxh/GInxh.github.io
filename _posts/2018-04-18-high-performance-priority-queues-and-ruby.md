@@ -23,7 +23,7 @@ Next, I went to the code to look at the data structures and algorithms used to s
 Using a heap is a common, and agreed to be a generally optimized implementation. A binary heap is a heap with up to two children. A heap is a specialized data structure that satisfies the heap property. For a max heap, the value of the parent node is
 either greater than or equal to the value of the child nodes.
 
-![heap](/assets/images/heap3.png "Center"){: .center-image}
+![heap](/assets/images/heap4.png "Center"){: .center-image}
 
 Note that a heap is not a binary search tree (BST). A binary search tree has a more specific ordering property, where all left descendents must be less than or equal to all right
 descendents.

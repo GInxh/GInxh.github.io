@@ -51,6 +51,7 @@ q << 2
 q << 5
 q << 7
 p q.elements # => [nil, 7, 2, 5]
+# q << ...
 ```
 
 ![array](/assets/images/array.png "Center"){: .center-image}

@@ -43,9 +43,18 @@ to the standard gem.
 There are multiple types of data structures that can be used to implement the abstract tree structures of a heap, but
 I used an array to implement a binary heap, where the children nodes of parent node at element index `k`, are located at 
 child indices `2k` and `2k + 1`. To make the math for referencing parent and child indices from eachother correct across the array, the first
-indice 0 is `nil`. 
+indice 0 is `nil`. The values from the heap example above are located in the array elements according to the indice values, for reference. 
+
+```ruby
+q = PriorityQueue.new
+q << 2
+q << 5
+q << 7
+p q.elements # => [nil, 7, 2, 5]
+```
 
 ![array](/assets/images/array.png "Center"){: .center-image}
+
 
 
 ###### getting the class together

@@ -48,7 +48,7 @@ I used an array to implement a binary heap, where the children nodes of parent n
 child indices `2k` and `2k + 1`. To make the math for referencing parent and child indices from eachother correct across the array, the first
 indice 0 is `nil`. The values from the heap example above are located in the array elements according to the indice values, for reference. 
 
-![array](/assets/images/array2.png "Center"){: .center-image}
+![array](/assets/images/arr2.png "Center"){: .center-image}
 
 
 ###### getting the class together

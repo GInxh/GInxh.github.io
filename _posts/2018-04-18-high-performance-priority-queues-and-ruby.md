@@ -20,8 +20,12 @@ of this queue with my larger project, but isolated benchmark testing with, real,
 For a sanity check, it turns out [others](https://www.salsify.com/blog/engineering/ruby-scalable-offline-sort) were having issues with the priority queue in this gem as well.
 
 Next, I went to the code to look at the data structures and algorithms used to see if there were any obvious disadvantages for runtimes. Simply looking at the code showed the priority queue container utilized a heap.
-Using a binary heap is a common, and agreed to be a generally optimized implementation.         We can summarize
-some of the most commonly known implementations with the following analysis, where **M** is the max element, and **N** is the number of elements in the queue. 
+Using a binary heap is a common, and agreed to be a generally optimized implementation. A heap is a specialized data structure that satisfies the heap property. For a max heap, the value of the parent node P is
+either greater than or equal to the value of the child nodes:
+
+![heap](/assets/images/heap.png "Center"){: .center-image}
+
+We can summarize some of the most commonly known implementations with the following analysis, where **M** is the max element, and **N** is the number of elements in the queue. 
 
  | implementation        | time         | space   | insert | del max | max
  |:--------              |:-------:     |:--------:| :----: | :----: | :--:
@@ -32,13 +36,17 @@ some of the most commonly known implementations with the following analysis, whe
  
 ### queue the code
 
-To understand what could be causing the issue despite the priority queue using a heap, I decided to make my own optimized priority queue with a heap in ruby, so I could compare my performance 
+To understand what could be causing the issue despite the priority queue using a heap, 
+I decided to make my own optimized priority queue with a heap in ruby, so I could compare my performance 
 to the standard gem.
 
 There are multiple types of data structures that can be used to implement the abstract tree structures of a heap, but
 I used an array to implement a binary heap, where the children nodes of parent node at element index `k`, are located at 
 child indices `2k` and `2k + 1`. To make the math for referencing parent and child indices from eachother correct across the array, the first
 indice 0 is `nil`. 
+
+![array](/assets/images/array.png "Center"){: .center-image}
+
 
 ###### getting the class together
 

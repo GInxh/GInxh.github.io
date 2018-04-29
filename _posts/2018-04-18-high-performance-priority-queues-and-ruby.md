@@ -20,7 +20,7 @@ of this queue with my larger project, but isolated benchmark testing with, real,
 For a sanity check, it turns out [others](https://www.salsify.com/blog/engineering/ruby-scalable-offline-sort) were having issues with the priority queue in this gem as well.
 
 Next, I went to the code to look at the data structures and algorithms used to see if there were any obvious disadvantages for runtimes. Simply looking at the code showed the priority queue container utilized a heap.
-Using a binary heap is a common, and agreed to be a generally optimized implementation. A heap is a specialized data structure that satisfies the heap property. For a max heap, the value of the parent node is
+Using a heap is a common, and agreed to be a generally optimized implementation. A binary heap is a heap with up to two children. A heap is a specialized data structure that satisfies the heap property. For a max heap, the value of the parent node is
 either greater than or equal to the value of the child nodes.
 
 ![heap](/assets/images/heap2.png "Center"){: .center-image}

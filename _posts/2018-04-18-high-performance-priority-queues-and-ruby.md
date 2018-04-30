@@ -48,7 +48,7 @@ I used an array to implement a binary heap, where the children nodes of parent n
 child indices `2k` and `2k + 1`. To make the math for referencing parent and child indices from eachother correct across the array, the first
 indice 0 is `nil`. The values from the heap example above are located in the array elements according to the indice values, for reference. 
 
-![array](/assets/images/arr2.png "Center"){: .center-image}
+![array](/assets/images/array2.png "Center"){: .center-image}
 
 
 ###### getting the class together
@@ -233,13 +233,24 @@ contain up to four pointers. A pointer to the minimum node of the root list is a
 This design indicates alot more objects, utilizing a node class for every element, with up to four pointers. If you are familiar with data structures and runtimes, you should not have to confirm that there should be a high overhead for memory by looking at the code, even without knowing 
 about how the methods work and interact with eachother. 
 
-However, given that most formal documentation on the fibonacci heap evades observation of realtime performance, and ruby garbage collection is rapidly evolving from one release to the next, it is probably best to confirm this a significant contributer to the disparity
-in performance. 
+However, given that most formal documentation on the fibonacci heap evades observation of realtime performance, and ruby garbage collection is rapidly evolving from one release to the next, 
+it is probably best to confirm this a significant contributer to the disparity in performance.  
 
-From ruby `GC.stat`, I can set up a test to measure the `heap_live_slots` which returns the number of live objects, for the program before and after instantiating each heap, and compare again.
+Unlike C, ruby by default has it's own heap, and performs memory allocation and garbage collection ([GC](https://ruby-doc.org/core-2.2.0/GC.html)). This is not the same heap as mentioned in the data structures used for the queue above.
+Programs have a stack used for static memory allocation, and a heap that is used for dynamic memory allocation. Variables allocated on the heap have their memory allocated at run time. Accessing this is slower than accessing
+stack variables. The heap size is only limited by the size of virtual memory.
+
+The ruby heap is made up of slots. Each slot can hold one object. An object in Ruby is a struct called `RVALUE`. Each `RVALUE` is 40bytes in size, which is also the size of a slot. Ruby initializes a heap with preallocated
+memory. By default the heap size is set to 16MB for `Ruby 2.4`. In earlier versions, this limit is 8MB. Additionally, the Ruby heap organizes the heap into pages, where each page can hold 408 slots. 
+`GC.stat[:heap__sorted_length]` returns how many pages Ruby has allocated. Because Ruby initially allocates this memory, it does not reflect how many objects have been allocated into memory. `GC.stat[:heap_used]`
+returns how many pages are icurrently in use, versus simply allocated. This number can also contain live objects as well as free slots. `GC.stat[:heap_eden_page_length]` returns live objects. `GC.stat[:heap_tomb_page_length]` 
+returns slots with no live objects that will be used when Eden runs out of space.  
+
+To see how many objects, and thus easily calculate how much memory has been allocated, we can run a test to see how many pages are needed
+as scale up the priority queue.  
 
 ```ruby
-allocated_before = GC.stat(:heap_live_slots)
+allocated_before = GC.stat(:heap_used)
 puts "#{allocated_before}"
 
 arr = [1E3, 1E4, 1E5, 1E6, 1E7, 1E8]
@@ -250,26 +261,34 @@ arr.each do |n|
   end
 end
 
-allocated_after = GC.stat(:heap_live_slots)
+allocated_after = GC.stat(:heap_used)
+
 puts "#{allocated_after}"
 ```
 
 With five runs for each version of the queue, the fibonacci heap consistently requires **2x** as many objects as the array based heap I created. 
 
+The insertions are being loaded onto the element queue with 8 byte integers. This means I can load about 2 million integers into my element based priority queue, 
+give or take some for the overhead of the class, before ruby triggers more memory allocation. 
 
 ###### memory allocation
 
-Unlike C, ruby by default has it's own heap, and performs memory allocation and garbage collection ([GC](https://ruby-doc.org/core-2.2.0/GC.html)). By default `MALLOC_INCREASE_BYTES_LIMIT` is set to 16MB for `Ruby 2.4`. The previous
-`GC.stat[:malloc_limit]` is deprecated.
+As mentioned above, Ruby initializes the program with a heap size of 16MB. [This means](https://www.speedshop.co/2017/03/09/a-guide-to-gc-stat.html) 
+ruby does not trigger a garbage collection run to see if it can first get rid of stuff it doesn't need anymore, which takes a relatively long time, or go 
+ask the kernel for more memory, which also takes a relatively long time, until the ruby programs needs more than 16MB. Ruby GC waits until all the slots in the preallocated heap are full, before it begins to see which
+objects it does not need anymore, and frees them. If the slots are still full, and in this case they will be, as all loaded elements will still be in the array, then ruby will allocate more memory.
 
-[This means](https://www.speedshop.co/2017/03/09/a-guide-to-gc-stat.html) ruby does not trigger a garbage collection run to see if it can first get rid of stuff it doesn't need anymore, which takes a relatively long time, or go 
-ask the kernel for more memory, which also takes a relatively long time, until the ruby programs needs more than 16MB. This could partially explain why between the second and third run, 
-the fibonacci heap runtime increased **123x**, with a signifcantly higher ratio in system time. 
+Ruby GC has internal variables that can be tuned from their default values. `RUBY_GC_HEAP_INIT_SLOTS` allocates the initial number of slots on the Ruby heap. The default
+value is 1000. When Ruby does need to allocate more memory, it gets more than it originally had by a factor of the current amount of memory `RUBY_GC_HEAP_GROWTH_FACTOR`, and utilizes this factor every time it scales
+up its memory allocation.
 
-In the above test, the insertions are being loaded onto the element queue with 8 byte integers. This means I can load about 2 million integers into my element based priority queue, 
-give or take some for the overhead of the class, before ruby triggers more memory allocation. 
+This could partially explain why between the second and third run, the fibonacci heap runtime increased **123x**, with a signifcantly higher ratio in system time, as it had to sweep for heap for recycleable memory,
+and allocate **1.8x** the current amount of memory multiple times.
 
-You can increase `MALLOC_INCREASE_BYTES_LIMIT` up to 32MB, and you should tailor this limit to the size of your program or Rails application. Increasing `MALLOC_INCREASE_BYTES_LIMIT` for both would scale down the performance discrepency between the two, but not eliminate it.
+This should be tuned to fit the number of live objects after a commonly booted process or Rails application is fully booted to avoid GC runs for initialization. 
+
+You can increase `RUBY_GC_HEAP_INIT_SLOTS`, and you should tailor this limit to the size of your program or Rails application. Increasing `RUBY_GC_HEAP_INIT_SLOTS` for both queues in this case. 
+would scale down the performance discrepency between the two, but not eliminate it.
 
 ###### delayed heap ordering
 
@@ -282,8 +301,7 @@ The fact that the most expensive methods are not apart of the insertion, further
 ###### the worst case is a likely case
 
 While the fibonacci heap advertises **O(log(n))** amortised running times for the extract minimum and delete methods, they have a worst case of **O(n)** due to the deferred heap ordering. 
-This is because the heap ordering is not limited to **O(log(n))** convenience from having a balanced tree, until the heap ordering due to these methods creates the balancing of 
-the heaps by reorganizing children and subheaps to existing heaps of the same order.
+This is because the heap ordering is not limited to **O(log(n))** convenience from having a balanced tree.
 
 This is not a degradation in performance from an unlikely arrangement of input values. The heap ordering will happen intermittently.
 This results in some operations running very fast, and some operations running very slow. More detailed explanations of the standard methods can be found [here](http://www.growingwiththeweb.com/data-structures/fibonacci-heap/overview/)

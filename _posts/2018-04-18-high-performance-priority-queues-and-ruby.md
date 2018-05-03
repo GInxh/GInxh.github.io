@@ -243,7 +243,7 @@ stack variables. The heap size is only limited by the size of virtual memory.
 The ruby heap is made up of slots. Each slot can hold one object. An object in Ruby is a struct called `RVALUE`. Each `RVALUE` is 40bytes in size, which is also the size of a slot. Ruby initializes a heap with preallocated
 memory. By default the heap size is set to 16MB for `Ruby 2.4`. In earlier versions, this limit is 8MB. Additionally, the Ruby heap organizes the heap into pages, where each page can hold 408 slots. 
 `GC.stat[:heap__sorted_length]` returns how many pages Ruby has allocated. Because Ruby initially allocates this memory, it does not reflect how many objects have been allocated into memory. `GC.stat[:heap_used]`
-returns how many pages are icurrently in use, versus simply allocated. This number can also contain live objects as well as free slots. `GC.stat[:heap_eden_page_length]` returns live objects. `GC.stat[:heap_tomb_page_length]` 
+returns how many pages are currently in use, versus simply allocated. This number can also contain live objects as well as free slots. `GC.stat[:heap_eden_page_length]` returns live objects. `GC.stat[:heap_tomb_page_length]` 
 returns slots with no live objects that will be used when Eden runs out of space.  
 
 To see how many objects, and thus easily calculate how much memory has been allocated, we can run a test to see how many pages are needed

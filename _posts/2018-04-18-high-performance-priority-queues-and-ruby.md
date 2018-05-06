@@ -157,8 +157,6 @@ should be demoted.
   def exch(i, j)
     @elements[i], @elements[j] = @elements[j], @elements[i]
   end
-end
-
 ```
 
 ###### a mini example
@@ -262,7 +260,6 @@ arr.each do |n|
 end
 
 allocated_after = GC.stat(:heap_used)
-
 puts "#{allocated_after}"
 ```
 

@@ -231,8 +231,6 @@ contain up to four pointers. A pointer to the minimum node of the root list is a
 This design indicates alot more objects, utilizing a node class for every element, with up to four pointers. If you are familiar with data structures and runtimes, you should not have to confirm that there should be a high overhead for memory by looking at the code, even without knowing 
 about how the methods work and interact with eachother. 
 
-###### an unexpected but slightly necessary crash course in ruby GC
-
 Unlike C, ruby by default has it's own heap, and performs memory allocation and garbage collection ([GC](https://ruby-doc.org/core-2.2.0/GC.html)). This is not the same heap as mentioned in the data structures used for the queue above.
 Programs have a stack used for static memory allocation, and a heap that is used for dynamic memory allocation. Variables allocated on the heap have their memory allocated at run time. Accessing this is slower than accessing
 stack variables. The heap size is only limited by the size of virtual memory.
@@ -242,8 +240,6 @@ memory. By default the heap size is set to 16MB for `Ruby 2.4`. In earlier versi
 `GC.stat[:heap__sorted_length]` returns how many pages Ruby has allocated. Because Ruby initially allocates this memory, it does not reflect how many objects have been allocated into memory. `GC.stat[:heap_used]`
 returns how many pages are currently in use, versus simply allocated. This number can also contain live objects as well as free slots. `GC.stat[:heap_eden_page_length]` returns live objects. `GC.stat[:heap_tomb_page_length]` 
 returns slots with no live objects that will be used when Eden runs out of space.  
-
-###### test everything
 
 Given that most formal documentation on the fibonacci heap evades observation of realtime performance, and ruby garbage collection is rapidly evolving from one release to the next, 
 it is probably best to confirm this a significant contributer to the disparity in performance.  

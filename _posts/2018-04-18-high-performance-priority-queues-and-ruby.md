@@ -267,9 +267,6 @@ puts "#{allocated_after}"
 
 With five runs for each version of the queue, the fibonacci heap consistently requires **2x** as many objects as the array based heap I created. 
 
-The insertions are being loaded onto the element queue with 8 byte integers. This means I can load about 2 million integers into my element based priority queue, 
-give or take some for the overhead of the class, before ruby triggers more memory allocation. 
-
 ###### memory allocation
 
 As mentioned above, Ruby initializes the program with a heap size of 16MB. [This means](https://www.speedshop.co/2017/03/09/a-guide-to-gc-stat.html) 
@@ -280,6 +277,9 @@ objects it does not need anymore, and frees them. If the slots are still full, a
 Ruby GC has internal variables that can be tuned from their default values. `RUBY_GC_HEAP_INIT_SLOTS` allocates the initial number of slots on the Ruby heap. The default
 value is 1000. When Ruby does need to allocate more memory, it gets more than it originally had by a factor of the current amount of memory `RUBY_GC_HEAP_GROWTH_FACTOR`, and utilizes this factor every time it scales
 up its memory allocation.
+
+The insertions are being loaded onto the element queue with 8 byte integers. This means I can load about 2 million integers into my element based priority queue, 
+give or take some for the overhead of the class, before ruby triggers more memory allocation. 
 
 This could partially explain why between the second and third run, the fibonacci heap runtime increased **123x**, with a signifcantly higher ratio in system time, as it had to sweep for heap for recycleable memory,
 and allocate **1.8x** the current amount of memory multiple times. This should be tuned to fit the number of live objects after a commonly booted process or Rails application is fully booted to avoid GC runs for initialization. 

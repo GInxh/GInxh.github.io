@@ -234,6 +234,8 @@ about how the methods work and interact with eachother.
 However, given that most formal documentation on the fibonacci heap evades observation of realtime performance, and ruby garbage collection is rapidly evolving from one release to the next, 
 it is probably best to confirm this a significant contributer to the disparity in performance.  
 
+###### an unexpected but slightly necessary crash course in ruby GC
+
 Unlike C, ruby by default has it's own heap, and performs memory allocation and garbage collection ([GC](https://ruby-doc.org/core-2.2.0/GC.html)). This is not the same heap as mentioned in the data structures used for the queue above.
 Programs have a stack used for static memory allocation, and a heap that is used for dynamic memory allocation. Variables allocated on the heap have their memory allocated at run time. Accessing this is slower than accessing
 stack variables. The heap size is only limited by the size of virtual memory.

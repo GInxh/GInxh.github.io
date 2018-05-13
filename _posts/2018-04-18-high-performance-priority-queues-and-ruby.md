@@ -206,7 +206,8 @@ While the original benchmark was set up to test up to 400 million inserted objec
 As it turns out, my [code](https://github.com/GInxh/algorithms) was faster, much faster. 
 
 I should have been excited, but mostly I was confused by the large discrepency. To create a more detailed round of performance testing, 
-I decided to start by comparing code for the insertions. Both queues used heaps, but I had not looked into the separate container for the heap instantiated by the priority queue class in the default ruby algorithms gem,
+I decided to start by comparing code for the insertions. Both queues used heaps, but I had not looked into the separate container for the heap instantiated by the priority queue class in the default ruby algorithms gem.
+
 
 Outside of some obvious increase in object class instantiations for nodes, I realized insertion used a merge function, 
 and linked lists. Linked Lists! Merge functions! What is going on here? It turns out the ruby algorithms gem doesn't use a normal heap, it uses a fibonacci heap. My first reaction was, what is a fibonacci heap? 
@@ -245,7 +246,7 @@ Given that most formal documentation on the fibonacci heap evades observation of
 it is probably best to confirm this a significant contributer to the disparity in performance.  
 
 To see how many objects, and thus easily calculate how much memory has been allocated, we can run a test to see how many pages are needed
-as scale up the priority queue.  
+to scale up the priority queue.  
 
 ```ruby
 allocated_before = GC.stat(:heap_used)

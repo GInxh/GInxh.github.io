@@ -8,7 +8,7 @@ Hi. My name is Virginia Hickox.
 I have a Bachelors in Electrical Engineering from RPI, where I did a concentration in Electric Power. After working for a consultancy startup designing renewable energy farms,
 I worked at the NYISO, designing and analyzing powerflow software for economic dispatch and energy pricing using machine larning with large sets of real time pricing data. 
 
-Despite being on a team of Power Engineers, most of  my work focused on optimizing data center architecture to support big data queries, 
+Despite being on a team of Power Engineers, most of  my work focused on optimizing data center architecture to support big data queries for time series data, 
 and building DevOps tools to respond and act on mission critical events on the power grid.
 
 I now run a Devops team for a blockchain company that provides a platform for decentralized applications and encrypted user data, creating cloud agnostic testing tools to support

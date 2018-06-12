@@ -5,7 +5,7 @@ permalink: /about/
 
 Hi. My name is Virginia Hickox. 
 
-I have a Bachelors in Electrical Engineering from RPI, where I did a concentration in Electric Power. 
+I have a Bachelors in Electrical Engineering from RPI. 
 
 I am the first dedicated SRE for a blockchain company that provides a platform for decentralized applications for users hosting their own encrypted data in the cloud. 
 

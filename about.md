@@ -11,7 +11,7 @@ I am an SRE for a company providing a peer to peer network at the application la
 
 I am currently developing scalable fleets of peer nodes to support user growth. I am also developing testing tools and microservices to support peer nodes and user hosted data stores, for a secure and optimized user experience, with a focus on decentralization for developing infrastructure as software. 
 
-In my spare time, I also like to [code](https://github.com/GInxh/), and take Computer Science classes on certain topics as I engage in them or approach them in projects I work on, inside and outside of work. 
+In my spare time, I also like to [code](https://github.com/GInxh/), and take Computer Science classes on certain topics as I approach them in projects I work on. 
 
 If you would like a copy of my resume, or to work on a project with me, you can contact me
 

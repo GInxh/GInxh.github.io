@@ -7,12 +7,13 @@ Hi. My name is Virginia Hickox.
 
 I have a Bachelors in Electrical Engineering from RPI. 
 
-I am the first dedicated SRE for a company providing a peer to peer network at the application layer, for decentralized applications for users hosting their own encrypted data in the cloud. 
+I am anSRE for a company providing a peer to peer network at the application layer, for decentralized applications for users hosting their own encrypted data in the cloud. 
 
-I am currently developing cloud host agnostic testing tools to support user hosted nodes for a secure and optimized user experience, with a focus
+I am currently developing scalable fleets of peer nodes in a cloud host with terraform to automate deplotment in cloud host agnostic manner. I am also developing testing tools and microservices to support user hosted nodes for a secure and optimized user experience, with a focus
+
 on decentralization for developing infrastructure as software. 
 
-In my spare time, I like to [code](https://github.com/GInxh/), and take classes to also complete my Bachelors in Computer Science.  
+In my spare time, I like to [code](https://github.com/GInxh/), and take all the classes for a Computer Science degree. I am taking the classes from vairous institutions depending on which college offers the best course on said topic.   
 
 If you would like a copy of my resume, or to work on a project with me, you can contact me
 

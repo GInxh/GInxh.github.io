@@ -1,8 +1,6 @@
 # GInxh
 
-The website of Virginia Hickox. This is where I post some stuff about stuff. 
-
-link [here](https://ginxh.github.io/)
+The website of Virginia Hickox. This is where I post some stuff about stuff. Website is currently being relocated. 
 
 ## License
 

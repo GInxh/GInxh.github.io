@@ -14,5 +14,6 @@ use
 * [vim](https://vim.rtorr.com/)
 * [markdown](markdown.pdf)
 * [github](https://rogerdudler.github.io/git-guide/)
+* [gdb](https://darkdust.net/files/GDB%20Cheat%20Sheet.pdf)
 * [system calls](https://syscalls.kernelgrok.com/)
 * [ARM Assembly 32bit](https://azeria-labs.com/about/)

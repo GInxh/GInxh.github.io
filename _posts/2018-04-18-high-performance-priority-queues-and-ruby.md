@@ -288,7 +288,7 @@ give or take some for the overhead of the class, before ruby triggers more memor
 This could partially explain why between the second and third run, the fibonacci heap runtime increased **123x**, with a signifcantly higher ratio in system time, as it had to sweep for heap for recycleable memory,
 and allocate **1.8x** the current amount of memory multiple times. This should be tuned to fit the number of live objects after a commonly booted process or Rails application is fully booted to avoid GC runs for initialization. 
 
-You can increase `RUBY_GC_HEAP_INIT_SLOTS, and you should tailor this limit to the size of your program or Rails application. Increasing `RUBY_GC_HEAP_INIT_SLOTS` for both queues in this case. 
+You can increase `RUBY_GC_HEAP_INIT_SLOTS`, and you should tailor this limit to the size of your program or Rails application. Increasing `RUBY_GC_HEAP_INIT_SLOTS` for both queues in this case. 
 would scale down the performance discrepency between the two, but not eliminate it.
 
 ###### delayed heap ordering

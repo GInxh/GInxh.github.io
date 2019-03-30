@@ -275,10 +275,12 @@ objects it does not need anymore, and frees them. If the slots are still full, a
 
 Ruby GC has internal variables that can be tuned from their default values. `RUBY_GC_HEAP_INIT_SLOTS` allocates the initial number of slots on the Ruby heap. The default
 value is 1000. When Ruby does need to allocate more memory, it gets more than it originally had by a factor of the current amount of memory `RUBY_GC_HEAP_GROWTH_FACTOR`, and utilizes this factor every time it scales
-up its memory allocation. Currently, this value is set as a default to `1.8x`. Amongst the community developers for Ruby GC, [Sam Saffron](https://samsaffron.com/archive/2014/04/08/ruby-2-1-garbage-collection-ready-for-production) 
-had originally brought up this issue [here](https://bugs.ruby-lang.org/projects/ruby-trunk) to decrease the default growth factor, but for now it is left as a tunable parameter. Initially, tuning it to `1.3` is a good first edit to compare
-performance for applications that do not have exponential object proliferation or otherwise growth expected in the application. Having a high growth factor will typically spend time allocating much more 
+up its memory allocation. Currently, this value is set as a default to 1.8x`. If `RUBY_GC_HEAP_GROWTH_FACTOR` is set to allocate more memory than is needed, it will result in unecessary latenacy, allocating much more 
 memory than is needed, slowing down applications that will not use all of the next allocation of memory. 
+
+Amongst the community developers for Ruby GC, [Sam Saffron](https://samsaffron.com/archive/2014/04/08/ruby-2-1-garbage-collection-ready-for-production) 
+had originally brought up this issue [here](https://bugs.ruby-lang.org/projects/ruby-trunk) to decrease the default growth factor, but for now it is left as a tunable parameter. Initially, tuning it to `1.3` is a good first edit to compare
+performance for applications that do not have exponential object proliferation or otherwise growth expected in the application. 
 
 In this case, the priority queue I made for testing above has insertions loading onto the element queue with 8 byte integers. This means I can load about 2 million integers into my element based priority queue, 
 give or take some for the overhead of the class, before ruby triggers more memory allocation. 
@@ -286,7 +288,7 @@ give or take some for the overhead of the class, before ruby triggers more memor
 This could partially explain why between the second and third run, the fibonacci heap runtime increased **123x**, with a signifcantly higher ratio in system time, as it had to sweep for heap for recycleable memory,
 and allocate **1.8x** the current amount of memory multiple times. This should be tuned to fit the number of live objects after a commonly booted process or Rails application is fully booted to avoid GC runs for initialization. 
 
-You can increase `RUBY_GC_HEAP_INIT_SLOTS`, and you should tailor this limit to the size of your program or Rails application. Increasing `RUBY_GC_HEAP_INIT_SLOTS` for both queues in this case. 
+You can increase `RUBY_GC_HEAP_INIT_SLOTS, and you should tailor this limit to the size of your program or Rails application. Increasing `RUBY_GC_HEAP_INIT_SLOTS` for both queues in this case. 
 would scale down the performance discrepency between the two, but not eliminate it.
 
 ###### delayed heap ordering

@@ -46,8 +46,6 @@ nav:
     url:            "/me"
   - name:           "documents"
     url:            "/docs"
-  - name:           "identity"
-    url:            "/.well-known" 
  
 # Sass
 sass:

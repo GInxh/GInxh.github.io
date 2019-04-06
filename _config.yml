@@ -43,10 +43,11 @@ kramdown:
 # Navigation
 nav:
   - name:           "me"
-    url:            "/about"
+    url:            "/me"
   - name:           "documents"
-    url:            "/tags"
- 
+    url:            "/docs"
+  - name:           "identity"
+    url:            "/.well-known" 
  
 # Sass
 sass:

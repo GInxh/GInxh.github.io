@@ -46,7 +46,7 @@ nav:
   - name:           "me"
     url:            "/me"
   - name:           "documents"
-    url:            "/docs"
+    url:            "/documents"
  
 # Sass
 sass:

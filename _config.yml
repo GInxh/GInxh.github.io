@@ -44,9 +44,9 @@ kramdown:
 # Navigation
 nav:
   - name:           "me"
-    url:            "/me"
+    url:            "/about"
   - name:           "documents"
-    url:            "/documents"
+    url:            "/tags"
  
 # Sass
 sass:

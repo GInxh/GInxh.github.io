@@ -275,7 +275,7 @@ objects it does not need anymore, and frees them. If the slots are still full, a
 
 Ruby GC has internal variables that can be tuned from their default values. `RUBY_GC_HEAP_INIT_SLOTS` allocates the initial number of slots on the Ruby heap. The default
 value is 1000. When Ruby does need to allocate more memory, it gets more than it originally had by a factor of the current amount of memory `RUBY_GC_HEAP_GROWTH_FACTOR`, and utilizes this factor every time it scales
-up its memory allocation. Currently, this value is set as a default to 1.8x`. If `RUBY_GC_HEAP_GROWTH_FACTOR` is set to allocate more memory than is needed, it will result in unecessary latenacy, allocating much more 
+up its memory allocation. Currently, this value is set as a default to `1.8x`. If `RUBY_GC_HEAP_GROWTH_FACTOR` is set to allocate more memory than is needed, it will result in unecessary latenacy, allocating much more 
 memory than is needed, slowing down applications that will not use all of the next allocation of memory. 
 
 Amongst the community developers for Ruby GC, [Sam Saffron](https://samsaffron.com/archive/2014/04/08/ruby-2-1-garbage-collection-ready-for-production) 

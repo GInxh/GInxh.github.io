@@ -78,6 +78,35 @@ class PriorityQueue
   end
   ```
 
+###### sink 
+
+While iterating through the elements of the array, we have to find the largest child node, as the heap ordering
+does not specify which child node should be larger than the other, just that both `<=` the parent. If the parent
+has children, and is less than than a child node, the parent will exchange places, or indices in the array, with the child node, promoting the child node to match is priority 
+with a higher ordering in the heap array, while the parent node gets demoted to be a lesser child node. We then
+set the indice, now again analyze the parent, newly demoted to a child, as a new parent to its current children, to see if it
+should be demoted. 
+
+  ```ruby
+  private
+  def sink(k)
+    # j = child
+    while 2*k <= size
+      j = 2*k
+      # get the largest child
+      if j < size && less?(j, j+1)
+        j += 1
+      end
+      #if parent not < largest child
+      if !less?(k,j)
+        break
+      end
+      exch(k, j)
+      k = j
+     end
+  end
+```
+
 ###### swim
 
 If the newly inserted element, now a child, is anything other than the first element, or the root at index 1, and the parent is less, the parent will swap places, 
@@ -116,34 +145,7 @@ is now at the top top of the heap, and needs to be reordered or "sink" to its ap
   end
 
   ```
-###### sink 
 
-While iterating through the elements of the array, we have to find the largest child node, as the heap ordering
-does not specify which child node should be larger than the other, just that both `<=` the parent. If the parent
-has children, and is less than than a child node, the parent will exchange places, or indices in the array, with the child node, promoting the child node to match is priority 
-with a higher ordering in the heap array, while the parent node gets demoted to be a lesser child node. We then
-set the indice, now again analyze the parent, newly demoted to a child, as a new parent to its current children, to see if it
-should be demoted. 
-
-  ```ruby
-  private
-  def sink(k)
-    # j = child
-    while 2*k <= size
-      j = 2*k
-      # get the largest child
-      if j < size && less?(j, j+1)
-        j += 1
-      end
-      #if parent not < largest child
-      if !less?(k,j)
-        break
-      end
-      exch(k, j)
-      k = j
-     end
-  end
-```
 
 ###### array helpers
 

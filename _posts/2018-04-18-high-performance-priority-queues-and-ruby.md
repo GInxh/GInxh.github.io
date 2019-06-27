@@ -277,7 +277,7 @@ objects it does not need anymore, and frees them. If the slots are still full, a
 
 Ruby GC has internal variables that can be tuned from their default values. `RUBY_GC_HEAP_INIT_SLOTS` allocates the initial number of slots on the Ruby heap. The default
 value is 1000. When Ruby does need to allocate more memory, it gets more than it originally had by a factor of the current amount of memory `RUBY_GC_HEAP_GROWTH_FACTOR`, and utilizes this factor every time it scales
-up its memory allocation. Currently, this value is set as a default to `1.8x`. If `RUBY_GC_HEAP_GROWTH_FACTOR` is set to allocate more memory than is needed, it will result in unecessary latenacy, allocating much more 
+up its memory allocation. Currently, this value is set as a default to `1.8x`. If `RUBY_GC_HEAP_GROWTH_FACTOR` is set to allocate more memory than is needed, it will result in unecessary latency, allocating much more 
 memory than is needed, slowing down applications that will not use all of the next allocation of memory. 
 
 Amongst the community developers for Ruby GC, [Sam Saffron](https://samsaffron.com/archive/2014/04/08/ruby-2-1-garbage-collection-ready-for-production) 
@@ -287,7 +287,7 @@ performance for applications that do not have exponential object proliferation o
 In this case, the priority queue I made for testing above has insertions loading onto the element queue with 8 byte integers. This means I can load about 2 million integers into my element based priority queue, 
 give or take some for the overhead of the class, before ruby triggers more memory allocation. 
 
-This could partially explain why between the second and third run, the fibonacci heap runtime increased **123x**, with a signifcantly higher ratio in system time, as it had to sweep for heap for recycleable memory,
+This could partially explain why between the second and third run, the fibonacci heap runtime increased **123x**, with a signifcantly higher ratio in system time, as it had to sweep the heap for recycleable memory,
 and allocate **1.8x** the current amount of memory multiple times. This should be tuned to fit the number of live objects after a commonly booted process or Rails application is fully booted to avoid GC runs for initialization. 
 
 You can increase `RUBY_GC_HEAP_INIT_SLOTS` to tailor this limit to the size of your program or Rails application. Increasing `RUBY_GC_HEAP_INIT_SLOTS` for both queues in this case. 

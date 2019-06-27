@@ -7,8 +7,8 @@ tags: []
 comments: false
 ---
 
-Recently, I explored utilizing a priority queue for a project I am working on in ruby that involves handling alot of ingoing and outgoing data in realtime.
-However, ruby does not have a priority queue on tap to use. It does utilize [gems](https://www.ruby-lang.org/en/libraries/) 
+Recently, I explored utilizing a priority queue for a project I am working on in ruby that involves reading in more data that can fit in RAM by multiples, and also writing out that data in realtime.
+For a small portion of this external sorting mechanism, I wanted to use a priority queue. However, ruby does not have a priority queue on tap to use. It does utilize [gems](https://www.ruby-lang.org/en/libraries/) 
 as sometimes standard integrations, or otherwise popular solutions for install. One of the most [commonly utilized](https://github.com/kanwei/algorithms) 
 priority queues in ruby was written in the 2008 [Google Summer of Code](https://summerofcode.withgoogle.com/) project. In fact, it is so commonly
 used and heavily integrated with the development community, it is the default repo for: 

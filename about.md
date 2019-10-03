@@ -14,6 +14,3 @@ After a healthy understanding of computing constraints on large scale data cente
 I like kubernetes. I don't like the kubernetes security model, as it doesn't really exist by default. As a result, a large amount of my time and focus has gone into learning about low level monitoring, network security, and sandboxing. 
 
 I now work as a Software Engineer for a security company making vulnerability detection agents, focusing on performance. tldr: I [chase memory](https://ginxh.io/2018-04-18/high-performance-priority-queues-and-ruby/) around alot, and try to make it better :) 
-
-via [email](mailto:virginiahickox@protonmail.com)  
-

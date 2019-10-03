@@ -5,7 +5,7 @@ permalink: /about/
 
 Hi. My name is Virginia Hickox. 
 
-I have a Bachelors in Electrical Engineering from RPI. I concentrated in power electronics & electric power. After working for power and energy startups, I moved onto designing fault tolerant systems, & detecting outlier behavior for data centers running electric power grids. 
+I have a Bachelors in Electrical Engineering from RPI. I concentrated in power electronics & electric power. After working for power & energy startups, I started designing fault tolerant systems, & detecting outlier behavior for data centers running electric power grids. 
 
 Alot of people have asked me about what algorithms I worked with & what these solutions entail. I encourage you to explore [here](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-034-artificial-intelligence-fall-2010/lecture-videos/) if you are curious about this kind of stuff.  
 

@@ -41,13 +41,6 @@ markdown:           kramdown
 kramdown:
   input:            GFM
 
-# Navigation
-nav:
-  - name:           "me"
-    url:            "/about"
-  - name:           "documents"
-    url:            "/tags"
- 
 # Sass
 sass:
   sass_dir:         _sass
